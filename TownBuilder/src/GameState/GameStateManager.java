@@ -47,6 +47,7 @@ public class GameStateManager {
 
 		} catch (Exception e) {
 			System.out.println(e);
+			loadState(currentState);
 		}
 	}
 
@@ -69,7 +70,12 @@ public class GameStateManager {
 	}
 
 	public void keyReleased(int k) {
+		try {
 		gameStates[currentState].keyReleased(k);
+		}
+		catch(Exception e) {
+			
+		}
 	}
 
 	public void mouseClicked(MouseEvent e) {
