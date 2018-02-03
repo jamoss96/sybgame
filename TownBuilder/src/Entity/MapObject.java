@@ -66,6 +66,7 @@ public abstract class MapObject {
     public boolean up;
     public boolean down;
     protected boolean canMove;
+    private boolean working = false;
 
     public boolean isCanMove() {
         return canMove;
@@ -234,6 +235,8 @@ public abstract class MapObject {
                 || y + ymap + height < 0
                 || y + ymap - height > GamePanel.HEIGHT;
     }
+    
+
 
     public void draw(java.awt.Graphics2D g) {
         if (facing == facingRight) {
@@ -330,5 +333,17 @@ public abstract class MapObject {
         }
 
     }
+
+	public void update() {
+		
+	}
+
+	public boolean isWorking() {
+		return working;
+	}
+
+	public void setWorking(boolean working) {
+		this.working = working;
+	}
 
 }

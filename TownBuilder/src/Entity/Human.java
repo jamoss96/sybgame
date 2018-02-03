@@ -7,12 +7,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Actions.Action;
 import TileMap.TileMap;
 
 public class Human extends MapObject {
 
 	public BufferedImage sprite;
 	public Animation animation;
+	public Action action;
+
+
 
 	public Human(TileMap tm) {
 		super(tm);
@@ -43,7 +47,7 @@ public class Human extends MapObject {
 		animation.setDelay(0);
 	}
 
-	void update() {
+	public  void update() {
 
 		getNextPosition();
 		checkTileMapCollision();
@@ -53,9 +57,7 @@ public class Human extends MapObject {
 
 	public void draw(Graphics2D g) {
 
-		AffineTransform at = AffineTransform.getTranslateInstance((x + xmap - width / 2) + 30, (y + ymap - height / 2));
-		at.rotate(Math.toRadians(90));
-		g.drawImage(sprite, at, null);
+		g.drawImage(sprite, getx(), gety(), getWidth(), getHeight(), null);
 
 	}
 
@@ -85,6 +87,14 @@ public class Human extends MapObject {
 				dy = maxSpeed;
 			}
 		}
+	}
+	
+	public Action getAction() {
+		return action;
+	}
+
+	public void setAction(Action action) {
+		this.action = action;
 	}
 
 }
